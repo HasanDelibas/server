@@ -1,10 +1,11 @@
 #!/bin/bash
-if [ -d $1 ];
+FILE=$(realpath $1)
+if [ -f $FILE ];
 then
-    echo "Installing Service $1"
-    cp $1 /etc/systemd/system/
-    systemctl enable $1
-  systemctl start $1
+  echo "Installing Service $FILE"
+  cp $FILE /etc/systemd/system/
+  systemctl enable $FILE
+  systemctl start $FILE
 else
     echo "Enter a parameter. Parameter must be a .service file"
 fi
