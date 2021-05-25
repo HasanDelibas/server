@@ -1,0 +1,12 @@
+[Unit]
+Description=Web Sunucu Servisi
+
+[Service]
+Restart=on-failure
+RestartSec=10
+WorkingDirector=~/web
+ExecStart=/usr/bin/node ~/web/server.js
+ExecStop=/bin/kill -INT $MAINPID
+
+[Install]
+WantedBy=multi-user.target
